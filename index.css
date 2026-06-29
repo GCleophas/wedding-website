@@ -1,0 +1,137 @@
+/* =====================================================
+       DESIGN TOKENS
+       Palette: ivory base, dusty rose accent, warm gold,
+       deep slate for text. Script display font for headers.
+    ===================================================== */
+    :root {
+      --ivory:      #FAF7F2;
+      --ivory-dark: #F0EAE0;
+      --rose:       #C9A99A;
+      --rose-light: #E8D5CE;
+      --gold:       #B8965A;
+      --slate:      #3D3530;
+      --slate-mid:  #6B5E58;
+      --white:      #FFFFFF;
+ 
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-script:  'Great Vibes', cursive;
+      --font-body:    'Lato', sans-serif;
+    }
+ 
+    /* =====================================================
+       RESET & BASE
+    ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      background: var(--ivory);
+      color: var(--slate);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+ 
+    /* =====================================================
+       PASSWORD SCREEN
+       Full-viewport overlay shown before any content.
+    ===================================================== */
+    #password-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--slate);
+      /* Subtle radial glow for depth */
+      background-image: radial-gradient(ellipse at 50% 40%, #5A4840 0%, var(--slate) 70%);
+    }
+ 
+    #password-screen .pw-title {
+      font-family: var(--font-script);
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--rose-light);
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.02em;
+    }
+ 
+    #password-screen .pw-subtitle {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 2.5rem;
+    }
+ 
+    /* Ornamental divider */
+    #password-screen .ornament {
+      color: var(--gold);
+      font-size: 1.2rem;
+      letter-spacing: 0.5em;
+      margin-bottom: 2rem;
+      opacity: 0.6;
+    }
+ 
+    #password-screen .pw-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+ 
+    #password-screen input[type="password"] {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--rose);
+      outline: none;
+      color: var(--ivory);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.3em;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      width: 220px;
+      transition: border-color 0.3s;
+    }
+ 
+    #password-screen input[type="password"]::placeholder {
+      color: var(--slate-mid);
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+    }
+ 
+    #password-screen input[type="password"]:focus {
+      border-bottom-color: var(--gold);
+    }
+ 
+    #password-screen button {
+      background: transparent;
+      border: 1px solid var(--rose);
+      color: var(--rose-light);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.6rem 2rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+ 
+    #password-screen button:hover {
+      background: var(--rose);
+      color: var(--white);
+    }
+ 
+    #password-screen .pw-error {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: #E07060;
+      min-height: 1.2em;
+      text-align: center;
+    }
