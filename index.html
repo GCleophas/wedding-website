@@ -1,28 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" href="index.css">
-    <title>Wedding Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onze Bruiloft</title>
+
+  <!-- Google Fonts: Cormorant Garamond (display serif) + Lato (body) + Great Vibes (script) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-    <div id="password-screen" role="dialog" aria-label="Voer het wachtwoord in">
-    <p class="pw-title">Wedding festival</p>
-    <p class="pw-subtitle">Gijs & Frederieke</p>
-    <div class="ornament">✦ ✦ ✦ ✦</div>
- 
-    <div class="pw-form">
-      <input
-        type="password"
-        id="pw-input"
-        placeholder="wachtwoord"
-        autocomplete="off"
-        aria-label="Wachtwoord"
-      />
-      <button id="pw-btn" type="button">Betreden</button>
-      <p class="pw-error" id="pw-error" aria-live="polite"></p>
-    </div>
-  </div>
+
+  <!-- =======================================================
+       MAIN CONTENT
+       Visitors land directly here — no password gate.
+  ======================================================= -->
+  <div id="main-content">
+
+    <!-- =====================================================
+         HERO — Wedding video + names
+    ===================================================== -->
+    <section class="hero" aria-label="Openingsfilm">
+
+      <!-- Mock video placeholder. To replace: remove this div
+           and add a <video autoplay muted loop playsinline> element. -->
+      <div class="hero-video-mock" aria-hidden="true">
+        <!-- Bokeh circles for atmosphere -->
+        <div class="bokeh" style="width:300px;height:300px;background:var(--rose);top:-60px;left:-80px;animation-delay:0s;"></div>
+        <div class="bokeh" style="width:200px;height:200px;background:var(--gold);bottom:40px;right:-40px;animation-delay:-3s;"></div>
+        <div class="bokeh" style="width:150px;height:150px;background:var(--rose-light);bottom:100px;left:20%;animation-delay:-5s;"></div>
+        <!-- Play button -->
+        <div class="play-icon" aria-label="Afspelen">▶</div>
+      </div>
+
+      <!-- Hero text -->
+      <div class="hero-text">
+        <p class="hero-eyebrow">Welkom bij</p>
+        <h1 class="hero-names">Naam &amp; Naam</h1>
+        <p class="hero-date">Dag · Maand · Jaar</p>
+      </div>
+
+      <!-- Animated scroll hint -->
+      <div class="scroll-cue" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         HORIZONTAL SLIDESHOW
+         Drag / scroll horizontally on desktop and mobile.
+    ===================================================== -->
+    <section class="slideshow-section" aria-label="Fotogalerij">
+      <div class="intro">
+        <p class="section-label">Een terugblik</p>
+        <h2 class="section-title">Onze mooiste momenten</h2>
+      </div>
+
+      <div class="slideshow-track-wrapper">
+        <!-- The track: populated by JS with mock slides -->
+        <div class="slideshow-track" id="slideshow-track" role="list"></div>
+      </div>
+
+      <!-- Prev / Next navigation buttons -->
+      <div class="slideshow-nav" aria-label="Dianavigatie">
+        <button id="slide-prev" aria-label="Vorige foto">←</button>
+        <button id="slide-next" aria-label="Volgende foto">→</button>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         TIMELINE SECTION
+         Click a moment to reveal its photos below.
+    ===================================================== -->
+    <section class="timeline-section" aria-label="Tijdlijn van de dag">
+      <p class="section-label">De dag van A tot Z</p>
+      <h2 class="section-title">Momenten</h2>
+
+      <!-- Five timeline tabs -->
+      <nav class="timeline-nav" role="tablist" aria-label="Bruiloftsmomenten">
+        <button class="timeline-btn active" role="tab" aria-selected="true"  aria-controls="panel-voorbereiding" data-moment="voorbereiding">
+          <span class="dot"></span>Voorbereiding
+        </button>
+        <button class="timeline-btn"        role="tab" aria-selected="false" aria-controls="panel-fotoshoot"     data-moment="fotoshoot">
+          <span class="dot"></span>Fotoshoot
+        </button>
+        <button class="timeline-btn"        role="tab" aria-selected="false" aria-controls="panel-ceremonie"     data-moment="ceremonie">
+          <span class="dot"></span>Ceremonie
+        </button>
+        <button class="timeline-btn"        role="tab" aria-selected="false" aria-controls="panel-borrel"        data-moment="borrel">
+          <span class="dot"></span>Borrel
+        </button>
+        <button class="timeline-btn"        role="tab" aria-selected="false" aria-controls="panel-feest"         data-moment="feest">
+          <span class="dot"></span>Feest
+        </button>
+      </nav>
+
+      <!-- Photo panels — one per moment, populated by JS -->
+      <div class="timeline-panels">
+        <div class="timeline-panel active" id="panel-voorbereiding" role="tabpanel"></div>
+        <div class="timeline-panel"        id="panel-fotoshoot"     role="tabpanel"></div>
+        <div class="timeline-panel"        id="panel-ceremonie"     role="tabpanel"></div>
+        <div class="timeline-panel"        id="panel-borrel"        role="tabpanel"></div>
+        <div class="timeline-panel"        id="panel-feest"         role="tabpanel"></div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+    <footer>
+      <p class="footer-script">Voor altijd samen</p>
+      <p>Naam &amp; Naam · Dag Maand Jaar</p>
+    </footer>
+
+  </div><!-- /#main-content -->
+
+  <!-- External script -->
+  <script src="script.js"></script>
 </body>
 </html>
