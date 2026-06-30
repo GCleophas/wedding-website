@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="referrer" content="no-referrer">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Onze Bruiloft</title>
@@ -28,14 +29,12 @@
 
       <!-- Mock video placeholder. To replace: remove this div
            and add a <video autoplay muted loop playsinline> element. -->
-      <div class="hero-video-mock" aria-hidden="true">
-        <!-- Bokeh circles for atmosphere -->
-        <div class="bokeh" style="width:300px;height:300px;background:var(--rose);top:-60px;left:-80px;animation-delay:0s;"></div>
-        <div class="bokeh" style="width:200px;height:200px;background:var(--gold);bottom:40px;right:-40px;animation-delay:-3s;"></div>
-        <div class="bokeh" style="width:150px;height:150px;background:var(--rose-light);bottom:100px;left:20%;animation-delay:-5s;"></div>
-        <!-- Play button -->
-        <div class="play-icon" aria-label="Afspelen">▶</div>
-      </div>
+      <div class="video-wrapper" id="videoWrapper" onclick="loadVideo()">
+  <img src="https://res.cloudinary.com/ddy2hvjop/image/upload/v1782847785/IMG_4152_k1tk0t.jpg" 
+       alt="Video thumbnail" 
+       class="video-thumbnail">
+  <div class="play-icon" aria-label="Afspelen">▶</div>
+</div>
 
       <!-- Hero text -->
       <div class="hero-text">
