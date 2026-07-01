@@ -205,23 +205,27 @@ body {
 
 .slide-item {
   flex: 0 0 auto;
-  width: clamp(220px, 30vw, 360px);
-  aspect-ratio: 3/4;
+  width: clamp(220px, 28vw, 300px);
   scroll-snap-align: start;
-  border-radius: 2px;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 6px 24px rgba(61,53,48,0.12);
+  background: var(--white);
+  padding: 0.9rem 0.9rem 1.4rem;
+  border-radius: 1px;
+  box-shadow: 0 2px 8px rgba(61,53,48,0.08);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slide-item:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: 0 4px 12px rgba(61,53,48,0.12);
 }
 
 /* Mock photo — a coloured gradient placeholder */
 .slide-mock {
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  padding: 1.25rem;
-  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--white);
 }
 
 /* Slight overlay for the caption to read on */
@@ -229,17 +233,23 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(61,53,48,0.5) 0%, transparent 50%);
+}
+
+.slide-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .slide-caption {
-  position: relative;
-  z-index: 1;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.9rem;
-  color: var(--ivory);
-  letter-spacing: 0.05em;
+  display: block;
+  margin-top: 1.1rem;
+  text-align: center;
+  font-family: var(--font-script);
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  color: var(--slate-mid);
 }
 
 /* Slideshow nav arrows */
@@ -477,5 +487,12 @@ footer p {
   width: 100%;
   height: 100%;
   border: none;
+  display: block;
+}
+
+.slide-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }

@@ -7,14 +7,14 @@
 // gradient: CSS gradient string used as mock photo.
 // caption: small text shown on the slide.
 const SLIDES = [
-  { gradient: 'linear-gradient(135deg,#C9A99A,#E8D5CE)', caption: 'Getting ready' },
-  { gradient: 'linear-gradient(135deg,#B8965A,#D4B98A)', caption: 'De ringen' },
-  { gradient: 'linear-gradient(135deg,#8A9CAA,#B0C4CC)', caption: 'Eerste blik' },
-  { gradient: 'linear-gradient(135deg,#C9A99A,#B8965A)', caption: 'Fotoshoot' },
-  { gradient: 'linear-gradient(135deg,#9CAA8A,#C4CCAA)', caption: 'De ceremonie' },
-  { gradient: 'linear-gradient(135deg,#AA8A9C,#CCB0C4)', caption: 'Ja, ik wil!' },
-  { gradient: 'linear-gradient(135deg,#B89A65,#E8D5A0)', caption: 'Borrel' },
-  { gradient: 'linear-gradient(135deg,#6A8AAA,#A0B8CC)', caption: 'Eerste dans' },
+  { src: 'https://res.cloudinary.com/ddy2hvjop/image/upload/v1782847787/IMG_4170_f1msh3.jpg', caption: 'Getting ready' },
+  { src: 'https://res.cloudinary.com/ddy2hvjop/image/upload/v1782847787/IMG_4168_flmnpa.jpg', caption: 'De ringen' },
+  { src: 'https://res.cloudinary.com/ddy2hvjop/image/upload/v1782847786/IMG_4163_hjkmqg.jpg', caption: 'Eerste blik' },
+  { src: 'https://res.cloudinary.com/ddy2hvjop/image/upload/v1782847786/IMG_4165_n09xkp.jpg', caption: 'Fotoshoot' },
+  { src: 'https://res.cloudinary.com/ddy2hvjop/image/upload/v1782847788/IMG_4157_kammti.jpg', caption: 'De ceremonie' },
+  { src: 'https://res.cloudinary.com/ddy2hvjop/image/upload/v1782847787/IMG_4153_wxqoo0.jpg', caption: 'Ja, ik wil!' },
+  { src: 'https://res.cloudinary.com/ddy2hvjop/image/upload/v1782847785/IMG_4154_elsh2h.jpg', caption: 'Borrel' },
+  { src: 'https://res.cloudinary.com/ddy2hvjop/image/upload/v1782847785/IMG_4158_ckyhbv.jpg', caption: 'Eerste dans' },
 ];
 
 // Timeline moments: each moment has a title (Dutch)
@@ -84,10 +84,19 @@ SLIDES.forEach((slide) => {
   const item = document.createElement('div');
   item.className = 'slide-item';
   item.setAttribute('role', 'listitem');
-  item.innerHTML = `
-    <div class="slide-mock" style="background:${slide.gradient};">
-      <span class="slide-caption">${slide.caption}</span>
-    </div>`;
+
+  if (slide.src) {
+    item.innerHTML = `
+      <div class="slide-mock">
+        <img class="slide-photo" src="${slide.src}" alt="${slide.caption}" loading="lazy">
+      </div>
+      <span class="slide-caption">${slide.caption}</span>`;
+  } else {
+    item.innerHTML = `
+      <div class="slide-mock" style="background: linear-gradient(135deg,#C9A99A,#E8D5CE);"></div>
+      <span class="slide-caption">${slide.caption}</span>`;
+  }
+
   track.appendChild(item);
 });
 
