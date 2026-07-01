@@ -3,6 +3,12 @@
    Palette: ivory base, dusty rose accent, warm gold,
    deep slate for text. Script display font for headers.
 ===================================================== */
+@font-face {
+  font-family: 'Bizantheum';
+  src: url('fonts/Bizantheum.otf') format('opentype');
+  font-display: swap;
+}
+
 :root {
   --ivory:      #FAF7F2;
   --ivory-dark: #F0EAE0;
@@ -14,7 +20,7 @@
   --white:      #FFFFFF;
 
   --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-script:  'Great Vibes', cursive;
+  --font-script: 'Bizantheum', cursive;
   --font-body:    'Lato', sans-serif;
 }
 
