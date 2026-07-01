@@ -76,6 +76,23 @@ const MOMENTS = {
 };
 
 /* =======================================================
+   HERO VIDEO — CLICK TO PLAY
+======================================================= */
+function loadVideo() {
+  const wrapper = document.getElementById('videoWrapper');
+  const videoId = 'FcwzRHVzr-c'; // e.g. from https://youtu.be/XXXXXXXXXXX
+
+  wrapper.innerHTML = `
+    <iframe
+      src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0"
+      title="Onze trouwvideo"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>`;
+}
+
+/* =======================================================
    BUILD HORIZONTAL SLIDESHOW
 ======================================================= */
 const track = document.getElementById('slideshow-track');
